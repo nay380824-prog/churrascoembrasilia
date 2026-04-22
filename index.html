@@ -647,6 +647,21 @@
     margin-bottom: 1rem;
   }
 
+  .price-emoji {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .price-emoji-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+  }
+
   .price-consult {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
@@ -970,6 +985,63 @@
     background: var(--gold-light);
   }
 
+  /* ─── GALERIA ─── */
+  #galeria {
+    background: #080806;
+    padding: 5rem 0 0;
+  }
+
+  .galeria-header {
+    text-align: center;
+    padding: 0 2rem 3.5rem;
+  }
+
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    height: clamp(380px, 55vw, 680px);
+  }
+
+  .galeria-item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    transition: transform 0.8s ease;
+    filter: brightness(0.88) saturate(1.15);
+  }
+
+  .galeria-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(1) saturate(1.2);
+  }
+
+  .galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,8,0.55) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .galeria-divider {
+    width: 2px;
+    background: linear-gradient(to bottom, var(--green), var(--red), var(--yellow));
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
   /* ─── FOOTER ─── */
   footer {
     background: #050504;
@@ -1061,6 +1133,10 @@
 
     .hero-badges { gap: 1.5rem; }
     .badge-sep { display: none; }
+
+    .galeria-grid { grid-template-columns: 1fr; height: auto; }
+    .galeria-item { height: 280px; }
+    .galeria-divider { display: none; }
 
     .gaucho { width: 130px; opacity: 0.1; }
 
@@ -1279,6 +1355,8 @@
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-tier">Clássico</div>
+        <div class="price-emoji">🍖</div>
+        <div class="price-emoji-label">Somente alimentação</div>
         <div class="price-consult">Consulte o valor</div>
         <div class="price-unit">Solicite seu orçamento personalizado</div>
         <ul class="price-features">
@@ -1294,6 +1372,8 @@
       <div class="price-card featured">
         <div class="featured-tag">Mais Popular</div>
         <div class="price-tier">Festivo</div>
+        <div class="price-emoji">🍖🥤</div>
+        <div class="price-emoji-label">Alimentação + refrigerantes e sucos</div>
         <div class="price-consult">Consulte o valor</div>
         <div class="price-unit">Solicite seu orçamento personalizado</div>
         <ul class="price-features">
@@ -1309,6 +1389,8 @@
 
       <div class="price-card">
         <div class="price-tier">Premium</div>
+        <div class="price-emoji">🍖🥤🍺🍹</div>
+        <div class="price-emoji-label">Alimentação + bebidas não alcoólicas e alcoólicas</div>
         <div class="price-consult">Consulte o valor</div>
         <div class="price-unit">Valor varia conforme a marca de cerveja escolhida</div>
         <ul class="price-features">
@@ -1438,16 +1520,12 @@
           <input type="tel" placeholder="(61) 9XXXX-XXXX">
         </div>
         <div class="form-group">
-          <label>Tipo de evento</label>
-          <select>
-            <option value="">Selecione…</option>
-            <option>Aniversário</option>
-            <option>Casamento</option>
-            <option>Confraternização</option>
-            <option>Evento corporativo</option>
-            <option>Almoço / Jantar</option>
-            <option>Outro</option>
-          </select>
+          <label>Data do evento</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Local do evento</label>
+          <input type="text" placeholder="Endereço ou bairro em Brasília-DF">
         </div>
         <div class="form-group">
           <label>Nº de convidados (aprox.)</label>
@@ -1459,6 +1537,25 @@
         </div>
         <button class="form-submit" onclick="enviarWhatsapp()">Enviar pelo WhatsApp →</button>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria">
+  <div class="galeria-header">
+    <p class="section-label">Nossos eventos</p>
+    <h2 class="section-title">O fogo que <em>une</em> as pessoas</h2>
+  </div>
+  <div class="galeria-grid" style="position:relative;">
+    <div class="galeria-item">
+      <img src="foto1.jpg" alt="Churrasco em Brasília Buffet — profissionais assando carnes ao fogo">
+      <div class="galeria-overlay"></div>
+    </div>
+    <div class="galeria-divider"></div>
+    <div class="galeria-item">
+      <img src="foto2.jpg" alt="Churrasco em Brasília Buffet — carne na grelha ao fogo vivo">
+      <div class="galeria-overlay"></div>
     </div>
   </div>
 </section>
@@ -1485,14 +1582,16 @@
 function enviarWhatsapp() {
   const nome = document.querySelector('input[placeholder="Como podemos te chamar?"]').value;
   const tel = document.querySelector('input[placeholder="(61) 9XXXX-XXXX"]').value;
-  const evento = document.querySelector('select').value;
+  const data = document.querySelector('input[type="date"]').value;
+  const local = document.querySelector('input[placeholder="Endereço ou bairro em Brasília-DF"]').value;
   const qtd = document.querySelector('input[placeholder="Mínimo 30 adultos"]').value;
   const msg = document.querySelector('textarea').value;
 
   let texto = `Olá! Gostaria de solicitar um orçamento para o buffet de churrasco.%0A`;
   if (nome) texto += `%0ANome: ${encodeURIComponent(nome)}`;
   if (tel) texto += `%0ATelefone: ${encodeURIComponent(tel)}`;
-  if (evento) texto += `%0ATipo de evento: ${encodeURIComponent(evento)}`;
+  if (data) texto += `%0AData do evento: ${encodeURIComponent(data)}`;
+  if (local) texto += `%0ALocal do evento: ${encodeURIComponent(local)}`;
   if (qtd) texto += `%0AConvidados: ${encodeURIComponent(qtd)}`;
   if (msg) texto += `%0AMensagem: ${encodeURIComponent(msg)}`;
 
