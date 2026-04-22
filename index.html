@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Churrasco em Brasília Buffet – O tradicional churrasco gaúcho</title>
+<meta name="description" content="Buffet de churrasco a domicílio em Brasília-DF. Há 18 anos servindo o tradicional churrasco gaúcho com excelência. Atendemos eventos, aniversários, casamentos e confraternizações.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a08;
+    --gold: #c9a227;
+    --gold-light: #e8c84a;
+    --gold-dark: #9a7a1a;
+    --red: #b8231e;
+    --green: #1e6b2e;
+    --yellow: #d4a017;
+    --white: #f5f0e8;
+    --gray: #2a2a25;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(10,10,8,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,162,39,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: all 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+    opacity: 1;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Diagonal stripes background */
+  .stripes {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .stripe {
+    position: absolute;
+    width: 200%;
+    left: -50%;
+    transform-origin: center;
+  }
+
+  .stripe-green {
+    height: 90px;
+    background: var(--green);
+    top: 18%;
+    transform: rotate(-18deg);
+    opacity: 0.85;
+  }
+
+  .stripe-red {
+    height: 80px;
+    background: var(--red);
+    top: 24%;
+    transform: rotate(-18deg);
+    opacity: 0.9;
+  }
+
+  .stripe-yellow {
+    height: 70px;
+    background: var(--yellow);
+    top: 29%;
+    transform: rotate(-18deg);
+    opacity: 0.85;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(10,10,8,0.3) 0%, rgba(10,10,8,0.85) 70%);
+    z-index: 1;
+  }
+
+  /* Gaucho silhouette */
+  .gaucho {
+    position: absolute;
+    right: 6%;
+    top: 8%;
+    z-index: 2;
+    opacity: 0.13;
+    width: clamp(180px, 22vw, 340px);
+    animation: gauchofloat 7s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(201,162,39,0.15));
+  }
+
+  @keyframes gauchofloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 2rem;
+    animation: fadein 1.2s ease forwards;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadein 1s 0.3s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    text-shadow: 0 4px 40px rgba(0,0,0,0.8);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadein 1s 0.5s ease forwards;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.9rem);
+    color: var(--gold-light);
+    margin: 1rem 0 2.5rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadein 1s 0.7s ease forwards;
+  }
+
+  .gold-line {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadein 1s 0.9s ease forwards;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadein 1s 1.1s ease forwards;
+  }
+
+  .badge {
+    text-align: center;
+  }
+
+  .badge-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .badge-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    margin-top: 0.2rem;
+  }
+
+  .badge-sep {
+    width: 1px;
+    background: rgba(201,162,39,0.3);
+    align-self: stretch;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadein 1s 1.3s ease forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--gold);
+    color: var(--black);
+    padding: 1rem 2.2rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,162,39,0.4);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--gold);
+    padding: 1rem 2.2rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(201,162,39,0.1);
+    transform: translateY(-2px);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.8; transform: translateX(-50%) translateY(4px); }
+  }
+
+  .scroll-hint span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .scroll-arrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg);
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 2rem; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-title em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+
+  /* ─── ABOUT ─── */
+  #sobre {
+    background: linear-gradient(180deg, var(--black) 0%, #0f0f0a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #sobre::before {
+    content: '18';
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 22rem;
+    font-weight: 900;
+    color: rgba(201,162,39,0.04);
+    user-select: none;
+    line-height: 1;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .stat-card {
+    border: 1px solid rgba(201,162,39,0.2);
+    padding: 1.5rem;
+    background: rgba(201,162,39,0.03);
+    transition: border-color 0.3s;
+  }
+
+  .stat-card:hover {
+    border-color: rgba(201,162,39,0.5);
+  }
+
+  .stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-desc {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-top: 0.4rem;
+  }
+
+  .about-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .fire-card {
+    background: linear-gradient(135deg, #1a0a00, #2d1200);
+    border: 1px solid rgba(201,162,39,0.25);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fire-card::before {
+    content: '🔥';
+    position: absolute;
+    font-size: 8rem;
+    right: -1rem;
+    bottom: -1rem;
+    opacity: 0.15;
+  }
+
+  .fire-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .fire-card-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.6;
+  }
+
+  /* ─── SERVIÇOS ─── */
+  #servicos {
+    background: #0c0c08;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .service-card {
+    border: 1px solid rgba(201,162,39,0.15);
+    padding: 2rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+    background: rgba(255,255,255,0.01);
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(to right, var(--green), var(--red), var(--yellow));
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .service-card:hover {
+    border-color: rgba(201,162,39,0.4);
+    background: rgba(201,162,39,0.03);
+    transform: translateY(-4px);
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.6;
+  }
+
+  /* ─── CARDÁPIO ─── */
+  #cardapio {
+    background: linear-gradient(180deg, #0a0a08 0%, #0f0c05 100%);
+    position: relative;
+  }
+
+  .menu-stripe {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--green), var(--red), var(--yellow));
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .menu-category {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,162,39,0.15);
+    padding: 2rem;
+  }
+
+  .menu-cat-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(201,162,39,0.2);
+  }
+
+  .menu-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .menu-items li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.8);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .menu-items li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  /* ─── PREÇOS ─── */
+  #precos {
+    background: var(--black);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .price-card {
+    border: 1px solid rgba(201,162,39,0.2);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+    background: rgba(255,255,255,0.015);
+  }
+
+  .price-card.featured {
+    border-color: var(--gold);
+    background: rgba(201,162,39,0.04);
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: 1.2rem; right: -2.8rem;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 3.5rem;
+    transform: rotate(45deg);
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+
+  .price-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+  }
+
+  .price-tier {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .price-consult {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .price-unit {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .price-features li {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.75);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .price-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .price-note {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(201,162,39,0.2);
+    background: rgba(201,162,39,0.04);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.6;
+  }
+
+  .price-note strong {
+    color: var(--gold);
+  }
+
+  /* ─── COMO FUNCIONA ─── */
+  #como-funciona {
+    background: #0c0c08;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    margin-top: 3.5rem;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 3rem;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,162,39,0.3), transparent);
+  }
+
+  .step {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  .step-num {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--black);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    margin-bottom: 0.7rem;
+  }
+
+  .step-desc {
+    font-size: 0.83rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.6;
+  }
+
+  /* ─── CTA STRIP ─── */
+  .cta-strip {
+    background: linear-gradient(135deg, #0f0800 0%, #1a0f00 50%, #0f0800 100%);
+    border-top: 1px solid rgba(201,162,39,0.2);
+    border-bottom: 1px solid rgba(201,162,39,0.2);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--green), var(--red), var(--yellow));
+    opacity: 0.05;
+  }
+
+  .cta-strip-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.7rem;
+    position: relative;
+  }
+
+  .cta-strip-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: #25D366;
+    color: #fff;
+    padding: 1.1rem 2.5rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-whatsapp:hover {
+    background: #1fb356;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+  }
+
+  /* ─── CONTATO ─── */
+  #contato {
+    background: var(--black);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3.5rem;
+  }
+
+  .contact-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(201,162,39,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .contact-value a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-value a:hover { color: var(--gold); }
+
+  .contact-form-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,162,39,0.2);
+    padding: 2.5rem;
+  }
+
+  .form-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,162,39,0.2);
+    color: var(--white);
+    padding: 0.8rem 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group select option {
+    background: #1a1a15;
+    color: var(--white);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover {
+    background: var(--gold-light);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #050504;
+    border-top: 1px solid rgba(201,162,39,0.15);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: rgba(245,240,232,0.4);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-stripe {
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(to right, var(--green), var(--red), var(--yellow));
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── STICKY WHATSAPP ─── */
+  .sticky-wa {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .sticky-wa a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #25D366;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+
+  .sticky-wa a:hover {
+    transform: translateX(-4px);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.4);
+  }
+
+  .wa-ico { font-size: 1.2rem; }
+
+  /* ─── STRIPE DIVIDER ─── */
+  .stripe-divider {
+    height: 4px;
+    background: linear-gradient(to right, var(--green), var(--red), var(--yellow));
+    width: 100%;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .steps-grid::before { display: none; }
+
+    .hero-badges { gap: 1.5rem; }
+    .badge-sep { display: none; }
+
+    .gaucho { width: 130px; opacity: 0.1; }
+
+    .sticky-wa a span { display: none; }
+    .sticky-wa a { padding: 0.9rem; border-radius: 50%; }
+
+    section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Churrasco em Brasília</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#cardapio">Cardápio</a></li>
+    <li><a href="#precos">Preços</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="stripes">
+    <div class="stripe stripe-green"></div>
+    <div class="stripe stripe-red"></div>
+    <div class="stripe stripe-yellow"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Brasília · DF · Atendimento a domicílio</p>
+    <h1 class="hero-title">
+      Churrasco em
+      <span>Brasília Buffet</span>
+    </h1>
+    <p class="hero-tagline">O tradicional churrasco gaúcho</p>
+    <div class="gold-line"></div>
+
+    <div class="hero-badges">
+      <div class="badge">
+        <div class="badge-num">18</div>
+        <div class="badge-label">Anos de experiência</div>
+      </div>
+      <div class="badge-sep"></div>
+      <div class="badge">
+        <div class="badge-num">5h</div>
+        <div class="badge-label">Duração do evento</div>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="https://wa.me/5561982655292?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20buffet." class="btn-primary" target="_blank">
+        💬 Solicitar Orçamento
+      </a>
+      <a href="#cardapio" class="btn-secondary">Ver Cardápio</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Saiba mais</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<div class="stripe-divider"></div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">Nossa história</p>
+        <h2 class="section-title">Tradição gaúcha<br>há <em>18 anos</em> em Brasília</h2>
+        <p class="section-body">
+          Há 18 anos o Churrasco em Brasília Buffet atende com excelência e qualidade todos os seus clientes.
+          Levamos o autêntico sabor do churrasco gaúcho direto ao seu evento, com profissionais treinados
+          e carnes selecionadas.
+        </p>
+
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">+18</div>
+            <div class="stat-desc">Anos de experiência</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">8+</div>
+            <div class="stat-desc">Tipos de carne</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">3</div>
+            <div class="stat-desc">Pacotes disponíveis</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">★ 5</div>
+            <div class="stat-desc">Atendimento premium</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual">
+        <div class="fire-card">
+          <div class="fire-card-title">✦ O que está incluso</div>
+          <div class="fire-card-text">
+            Profissionais treinados, toalha e forro para a mesa do buffet, pratos e talheres individuais,
+            todo o material para preparo e serviço das carnes e entradas.
+          </div>
+        </div>
+        <div class="fire-card">
+          <div class="fire-card-title">✦ Atendemos em</div>
+          <div class="fire-card-text">
+            Casamentos · Aniversários · Confraternizações<br>
+            Eventos Corporativos · Almoços · Jantares<br>
+            <strong style="color:var(--gold)">Toda Brasília e região do DF</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARDÁPIO -->
+<section id="cardapio">
+  <div class="menu-stripe"></div>
+  <div class="section-inner">
+    <p class="section-label">O que servimos</p>
+    <h2 class="section-title">Cardápio <em>Completo</em></h2>
+    <p class="section-body">Ingredientes sugestivos — podem ser personalizados conforme o evento.</p>
+
+    <div class="menu-grid">
+      <div class="menu-category">
+        <div class="menu-cat-title">🥩 Carnes</div>
+        <ul class="menu-items">
+          <li>Picanha</li>
+          <li>Ancho</li>
+          <li>Maminha</li>
+          <li>Fraldinha</li>
+          <li>Carne Suína</li>
+          <li>Linguiça Suína ou Toscana</li>
+          <li>Linguiça de Frango</li>
+          <li>Drumet (coxinha da asa)</li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-cat-title">🍢 Entradas</div>
+        <ul class="menu-items">
+          <li>Pão de alho com maionese e orégano</li>
+          <li>Coração de frango</li>
+          <li>Coxinha da asa</li>
+          <li>Linguiças</li>
+          <li>Iscas de carne</li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-cat-title">🫘 Feijão Tropeiro</div>
+        <ul class="menu-items">
+          <li>Feijão Fradinho</li>
+          <li>Farofa Temperada</li>
+          <li>Bacon</li>
+          <li>Calabresa</li>
+          <li>Ovos</li>
+          <li>Cebola, Alho e Cebolinha</li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-cat-title">🥗 Acompanhamentos</div>
+        <ul class="menu-items">
+          <li>Arroz Branco</li>
+          <li>Mandioca cozida com manteiga</li>
+          <li>Vinagrete Tradicional</li>
+          <li>Salada de folhas e frutas</li>
+          <li>Salada tipo Mediterrânea</li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-cat-title">🍮 Sobremesa</div>
+        <ul class="menu-items">
+          <li>Sorvete com banana caramelada</li>
+          <li>Mousse de limão</li>
+          <li>Pêssego e Figo em calda com creme de leite</li>
+        </ul>
+        <p style="font-size:0.75rem; color:rgba(245,240,232,0.45); margin-top:0.8rem; font-style:italic;">*Escolher uma opção</p>
+      </div>
+
+      <div class="menu-category">
+        <div class="menu-cat-title">✨ Complementos</div>
+        <ul class="menu-items">
+          <li>Azeite & Aceto Balsâmico</li>
+          <li>Molho Barbecue</li>
+          <li>Molho para saladas</li>
+          <li>Sal grosso especial</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe-divider"></div>
+
+<!-- PREÇOS -->
+<section id="precos">
+  <div class="section-inner">
+    <p class="section-label">Investimento</p>
+    <h2 class="section-title">Pacotes por <em>pessoa</em></h2>
+    <p class="section-body">Mínimo de 30 convidados adultos. Valores por pessoa.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Clássico</div>
+        <div class="price-consult">Consulte o valor</div>
+        <div class="price-unit">Solicite seu orçamento personalizado</div>
+        <ul class="price-features">
+          <li>Cardápio completo de carnes e entradas</li>
+          <li>Acompanhamentos e saladas</li>
+          <li>Sobremesa inclusa</li>
+          <li>Pratos, talheres e rechaud</li>
+          <li>Profissionais treinados</li>
+        </ul>
+        <a href="https://wa.me/5561982655292?text=Quero%20saber%20mais%20sobre%20o%20pacote%20Clássico!" class="btn-primary" target="_blank" style="display:block; text-align:center; text-decoration:none;">Solicitar Orçamento</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="featured-tag">Mais Popular</div>
+        <div class="price-tier">Festivo</div>
+        <div class="price-consult">Consulte o valor</div>
+        <div class="price-unit">Solicite seu orçamento personalizado</div>
+        <ul class="price-features">
+          <li>Tudo do pacote Clássico</li>
+          <li>Coca-Cola, Fanta Laranja e Guaraná</li>
+          <li>Normal e Zero inclusos</li>
+          <li>Sucos em caixa (3 sabores)</li>
+          <li>Água mineral sem gás</li>
+          <li>Copos e garçons para bebidas</li>
+        </ul>
+        <a href="https://wa.me/5561982655292?text=Quero%20saber%20mais%20sobre%20o%20pacote%20Festivo!" class="btn-primary" target="_blank" style="display:block; text-align:center; text-decoration:none;">Solicitar Orçamento</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-tier">Premium</div>
+        <div class="price-consult">Consulte o valor</div>
+        <div class="price-unit">Valor varia conforme a marca de cerveja escolhida</div>
+        <ul class="price-features">
+          <li>Tudo do pacote Festivo</li>
+          <li>Cerveja a definir com o cliente — o orçamento é personalizado conforme a marca escolhida</li>
+          <li>Caipirinha e Caipiroska</li>
+          <li>Sabores: Limão, Abacaxi e Maracujá</li>
+          <li>Consumo livre por 5 horas</li>
+          <li>Estrutura de bebidas completa</li>
+        </ul>
+        <a href="https://wa.me/5561982655292?text=Quero%20saber%20mais%20sobre%20o%20pacote%20Premium!" class="btn-primary" target="_blank" style="display:block; text-align:center; text-decoration:none;">Solicitar Orçamento</a>
+      </div>
+    </div>
+
+    <div class="price-note" style="margin-top:1.5rem">
+      <strong>Crianças:</strong> Até 7 anos, valor a combinar · 8 a 12 anos pagam 50% · Acima de 12 anos, valor integral.<br>
+      <strong>Agendamento:</strong> Sujeito à disponibilidade. Reserva com 50% de entrada via PIX, espécie ou transferência.
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="section-inner">
+    <p class="section-label">Passo a passo</p>
+    <h2 class="section-title">Como <em>funciona</em></h2>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Entre em Contato</div>
+        <div class="step-desc">Fale com Saymon ou Mayron pelo WhatsApp e informe a data, o local e o número de convidados.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Receba o Orçamento</div>
+        <div class="step-desc">Enviamos uma proposta detalhada com cardápio e preços conforme o seu evento.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Confirme com 50%</div>
+        <div class="step-desc">A reserva da data é garantida com o adiantamento de 50% via PIX, espécie ou transferência.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Curta o Evento!</div>
+        <div class="step-desc">Chegamos no horário, montamos tudo e você só precisa receber seus convidados. Duração: até 5 horas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2 class="cta-strip-title">Pronto para um churrasco inesquecível?</h2>
+  <p class="cta-strip-sub">Solicite seu orçamento agora mesmo — respondemos rápido!</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/5561982655292?text=Olá%20Saymon!%20Gostaria%20de%20um%20orçamento%20para%20o%20buffet." class="btn-whatsapp" target="_blank">
+      <span class="wa-ico">💬</span>
+      <span>Saymon · (61) 98265-5292</span>
+    </a>
+    <a href="https://wa.me/5561981089458?text=Olá%20Mayron!%20Gostaria%20de%20um%20orçamento%20para%20o%20buffet." class="btn-whatsapp" target="_blank">
+      <span class="wa-ico">💬</span>
+      <span>Mayron · (61) 98108-9458</span>
+    </a>
+  </div>
+</div>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-inner">
+    <p class="section-label">Fale conosco</p>
+    <h2 class="section-title">Entre em <em>Contato</em></h2>
+
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Localização</div>
+            <div class="contact-value">Brasília · Distrito Federal<br>Atendimento em todo o DF</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label">WhatsApp — Saymon</div>
+            <div class="contact-value">
+              <a href="https://wa.me/5561982655292" target="_blank">(61) 98265-5292</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label">WhatsApp — Mayron</div>
+            <div class="contact-value">
+              <a href="https://wa.me/5561981089458" target="_blank">(61) 98108-9458</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">
+              <a href="https://www.instagram.com/churrascoembrasilia" target="_blank">@churrascoembrasilia</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem">
+          <a href="https://www.instagram.com/churrascoembrasilia" target="_blank" class="btn-secondary" style="display:inline-flex; align-items:center; gap:0.6rem; text-decoration:none;">
+            📸 Ver no Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-box">
+        <div class="form-title">✦ Solicite seu orçamento</div>
+        <div class="form-group">
+          <label>Seu nome</label>
+          <input type="text" placeholder="Como podemos te chamar?">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="(61) 9XXXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label>Tipo de evento</label>
+          <select>
+            <option value="">Selecione…</option>
+            <option>Aniversário</option>
+            <option>Casamento</option>
+            <option>Confraternização</option>
+            <option>Evento corporativo</option>
+            <option>Almoço / Jantar</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nº de convidados (aprox.)</label>
+          <input type="number" placeholder="Mínimo 30 adultos" min="30">
+        </div>
+        <div class="form-group">
+          <label>Mensagem (opcional)</label>
+          <textarea placeholder="Data do evento, local, dúvidas…"></textarea>
+        </div>
+        <button class="form-submit" onclick="enviarWhatsapp()">Enviar pelo WhatsApp →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe-divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Churrasco em Brasília Buffet</div>
+  <div class="footer-tagline">O tradicional churrasco gaúcho</div>
+  <div class="footer-stripe"></div>
+  <div class="footer-copy">© 2026 Churrasco em Brasília Buffet · Brasília-DF · @churrascoembrasilia</div>
+</footer>
+
+<!-- STICKY WHATSAPP -->
+<div class="sticky-wa">
+  <a href="https://wa.me/5561982655292?text=Olá!%20Gostaria%20de%20um%20orçamento." target="_blank">
+    <span class="wa-ico">💬</span>
+    <span>Falar pelo WhatsApp</span>
+  </a>
+</div>
+
+<script>
+function enviarWhatsapp() {
+  const nome = document.querySelector('input[placeholder="Como podemos te chamar?"]').value;
+  const tel = document.querySelector('input[placeholder="(61) 9XXXX-XXXX"]').value;
+  const evento = document.querySelector('select').value;
+  const qtd = document.querySelector('input[placeholder="Mínimo 30 adultos"]').value;
+  const msg = document.querySelector('textarea').value;
+
+  let texto = `Olá! Gostaria de solicitar um orçamento para o buffet de churrasco.%0A`;
+  if (nome) texto += `%0ANome: ${encodeURIComponent(nome)}`;
+  if (tel) texto += `%0ATelefone: ${encodeURIComponent(tel)}`;
+  if (evento) texto += `%0ATipo de evento: ${encodeURIComponent(evento)}`;
+  if (qtd) texto += `%0AConvidados: ${encodeURIComponent(qtd)}`;
+  if (msg) texto += `%0AMensagem: ${encodeURIComponent(msg)}`;
+
+  window.open(`https://wa.me/5561982655292?text=${texto}`, '_blank');
+}
+
+// Smooth reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.menu-category, .price-card, .service-card, .stat-card, .step, .fire-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
