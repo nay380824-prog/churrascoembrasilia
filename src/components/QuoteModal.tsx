@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { createPortal } from 'react-dom'
 import { site, whatsappLink } from '../content/site'
+import { lockScroll } from '../hooks/lockScroll'
 
 type Props = {
   isOpen: boolean
@@ -31,10 +32,10 @@ export default function QuoteModal({ isOpen, pacoteInicial, onClose }: Props) {
     if (!isOpen) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
     window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
+    const restore = lockScroll()
     return () => {
       window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
+      restore()
     }
   }, [isOpen, onClose])
 
@@ -71,9 +72,9 @@ export default function QuoteModal({ isOpen, pacoteInicial, onClose }: Props) {
       <form
         onSubmit={submit}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-lg rounded-t-3xl md:rounded-3xl bg-brand-ink border border-white/10 p-6 md:p-8 max-h-[92vh] overflow-y-auto"
+        className="w-full max-w-lg rounded-t-3xl md:rounded-3xl bg-brand-ink border border-white/10 p-5 md:p-7 max-h-[92vh] overflow-y-auto overscroll-contain"
       >
-        <div className="flex items-start justify-between gap-4 mb-6">
+        <div className="flex items-start justify-between gap-4 mb-4">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">orçamento</p>
             <h2 id="quote-title" className="text-2xl font-medium tracking-tight mt-1">
@@ -93,7 +94,7 @@ export default function QuoteModal({ isOpen, pacoteInicial, onClose }: Props) {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <label className="sm:col-span-2 text-xs text-white/60">
             Seu nome
             <input className={`${field} mt-1`} value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Como podemos te chamar?" />
@@ -141,13 +142,10 @@ export default function QuoteModal({ isOpen, pacoteInicial, onClose }: Props) {
 
         <button
           type="submit"
-          className="mt-6 w-full rounded-full bg-brand-red hover:bg-[#c4261d] transition-colors text-white font-medium py-3.5"
+          className="mt-5 w-full rounded-full bg-brand-red hover:bg-[#c4261d] transition-colors text-white font-medium py-3.5"
         >
           Enviar pelo WhatsApp
         </button>
-        <p className="text-center text-xs text-white/40 mt-3">
-          Ou chame direto no WhatsApp: {site.whatsapp.saymon.nome} {site.whatsapp.saymon.exibicao} · {site.whatsapp.mayron.nome} {site.whatsapp.mayron.exibicao}
-        </p>
       </form>
     </div>,
     document.body,

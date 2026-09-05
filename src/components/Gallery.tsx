@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { galeria } from '../content/site'
+import { lockScroll } from '../hooks/lockScroll'
 
 /**
  * Carrossel de fotos: uma fileira que rola para o lado, com setas.
@@ -43,10 +44,10 @@ export default function Gallery() {
       if (e.key === 'ArrowLeft') setAtual((i) => (i === null ? null : (i - 1 + galeria.length) % galeria.length))
     }
     window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
+    const restore = lockScroll()
     return () => {
       window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
+      restore()
     }
   }, [atual])
 

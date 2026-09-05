@@ -65,7 +65,7 @@ const perguntas: { pergunta: ReactNode; resposta: ReactNode }[] = [
             <p className="text-sm text-white/60">{p.resumo}</p>
             <ul className="mt-4 space-y-1.5 text-sm">
               {p.base && <li className="text-brand-gold">{p.base}</li>}
-              {p.itens.map((i) => (
+              {p.itensCurto.map((i) => (
                 <li key={i} className="flex gap-2 text-white/85">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green" />
                   {i}
@@ -116,7 +116,7 @@ const perguntas: { pergunta: ReactNode; resposta: ReactNode }[] = [
     resposta: (
       <>
         <p className="text-white/70">
-          No churrasco a carne vai saindo em vários pontos, e o churrasqueiro serve cada convidado do jeito que preferir. Da esquerda para a direita:
+          No churrasco a carne vai saindo em vários pontos, e o churrasqueiro serve como você preferir. Da esquerda para a direita:
         </p>
         <figure className="mt-4">
           <img

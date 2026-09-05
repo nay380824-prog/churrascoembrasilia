@@ -46,13 +46,13 @@ export const cardapio: BlocoCardapio[] = [
       'Carne suína',
       'Linguiça suína ou toscana',
       'Linguiça de frango',
-      'Drumet',
+      'Drumet (meio da asa)',
     ],
   },
   {
     titulo: 'Entradas',
     descricao: 'Petiscos servidos enquanto as carnes principais assam.',
-    itens: ['Pão de alho', 'Coração de frango', 'Ponta de asa', 'Linguiças', 'Tiras de carne'],
+    itens: ['Pão de alho caseiro (alho, maionese e orégano)', 'Coração de frango', 'Drumet (meio da asa)', 'Linguiças', 'Tiras de carne'],
   },
   {
     titulo: 'Acompanhamentos',
@@ -77,13 +77,13 @@ export const cardapio: BlocoCardapio[] = [
     itens: [
       'Sorvete com banana caramelizada',
       'Mousse de limão',
-      'Pêssego e figo em calda com chantilly',
+      'Pêssego e figo em calda com creme de leite',
     ],
   },
   {
     titulo: 'Complementos',
     descricao: 'Sempre à mesa.',
-    itens: ['Azeite e aceto balsâmico', 'Molho barbecue', 'Molho para salada', 'Sal grosso especial'],
+    itens: ['Azeite e aceto balsâmico', 'Molho barbecue', 'Molho para salada', 'Farofa temperada'],
   },
 ]
 
@@ -94,6 +94,8 @@ export type Pacote = {
   destaque?: boolean
   base?: string
   itens: string[]
+  /** Versão resumida, usada na página de dúvidas (a completa fica em Preços). */
+  itensCurto: string[]
 }
 
 export const pacotes: Pacote[] = [
@@ -107,6 +109,7 @@ export const pacotes: Pacote[] = [
       'Pratos, talheres e rechaud',
       'Equipe de profissionais treinados',
     ],
+    itensCurto: ['Cardápio completo de carnes e entradas', 'Pratos, talheres e rechaud', 'Equipe de profissionais treinados'],
   },
   {
     id: 'festivo',
@@ -120,6 +123,7 @@ export const pacotes: Pacote[] = [
       'Água mineral sem gás',
       'Copos e garçons para o serviço de bebidas',
     ],
+    itensCurto: ['Coca-Cola, Fanta Laranja e Guaraná (normal e zero)', 'Sucos em 3 sabores', 'Água mineral sem gás'],
   },
   {
     id: 'premium',
@@ -131,6 +135,7 @@ export const pacotes: Pacote[] = [
       'Caipirinha e caipiroska: limão, abacaxi e maracujá',
       'Open bar por 5 horas',
     ],
+    itensCurto: ['Cerveja a definir com o cliente', 'Caipirinha e caipiroska: limão, abacaxi e maracujá', 'Open bar por 5 horas'],
   },
 ]
 
@@ -138,7 +143,7 @@ export const condicoes = [
   { titulo: 'Mínimo de 30 adultos', texto: 'Os pacotes são calculados por pessoa, a partir de 30 convidados adultos.' },
   { titulo: 'Até 5 horas de evento', texto: 'A equipe chega antes, monta tudo e serve por até 5 horas.' },
   { titulo: 'Sinal de 50%', texto: 'A reserva é confirmada com 50% do valor, por PIX, dinheiro ou transferência.' },
-  { titulo: 'Crianças', texto: 'Até 3 anos não pagam. De 4 a 7 anos: 20% de desconto. De 8 a 12 anos: 50% de desconto. A partir de 12 anos: valor integral.' },
+  { titulo: 'Crianças', texto: 'Até 3 anos não pagam. De 4 a 7 anos: 20% de desconto. De 8 a 12 anos: 50% de desconto. A partir de 13 anos: valor integral.' },
 ]
 
 export const incluso = [
@@ -181,7 +186,7 @@ export const comoContratar = [
 
 export const observacoes = [
   'Sujeito à disponibilidade. Reserva efetivada com 50% de entrada via PIX, espécie ou transferência.',
-  'Crianças até 3 anos não pagam · 4 a 7 anos pagam 20% · 8 a 12 anos pagam 50% · acima de 12 anos, valor integral.',
+  'Crianças até 3 anos não pagam · 4 a 7 anos pagam 20% · 8 a 12 anos pagam 50% · a partir de 13 anos, valor integral.',
 ]
 
 /** Pontos da carne, na ordem em que aparecem na foto `public/pontos-da-carne.jpg` (da esquerda para a direita). */
@@ -209,5 +214,5 @@ export const galeria = [
   { src: '/galeria/evento-11.jpg', thumb: '/galeria/evento-11-thumb.jpg', alt: 'Churrasqueiro assando os espetos na churrasqueira de chão' },
   { src: '/galeria/evento-12.jpg', thumb: '/galeria/evento-12-thumb.jpg', alt: 'Mesa do buffet com salada, vinagrete e acompanhamentos' },
   { src: '/galeria/evento-13.jpg', thumb: '/galeria/evento-13-thumb.jpg', alt: 'Churrasqueiro da equipe na grelha' },
-  { src: '/galeria/evento-14.jpg', thumb: '/galeria/evento-14-thumb.jpg', alt: 'Sobremesa: pêssego em calda com chantilly' },
+  { src: '/galeria/evento-14.jpg', thumb: '/galeria/evento-14-thumb.jpg', alt: 'Sobremesa: pêssego em calda com creme de leite' },
 ]

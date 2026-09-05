@@ -21,7 +21,7 @@ function Sobre() {
       <section className="grid md:grid-cols-3 gap-4">
         {[
           { n: `${site.anos}`, l: 'anos de tradição' },
-          { n: '+1000', l: 'eventos realizados' },
+          { n: '+2000', l: 'eventos realizados' },
           { n: 'DF', l: 'atendimento em toda a região' },
         ].map((s) => (
           <div key={s.l} className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur p-6 md:p-8">
