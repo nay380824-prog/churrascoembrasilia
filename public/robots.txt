@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://churrascoembrasilia.com.br/sitemap.xml
