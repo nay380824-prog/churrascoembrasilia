@@ -37,7 +37,7 @@ export type BlocoCardapio = { titulo: string; descricao: string; itens: string[]
 export const cardapio: BlocoCardapio[] = [
   {
     titulo: 'Carnes',
-    descricao: 'Cortes selecionados, assados na hora pelo churrasqueiro.',
+    descricao: 'Cortes selecionados, assados na hora pelo churrasqueiro com tempero especial gaúcho e servidos ao longo do seu evento.',
     itens: [
       'Picanha',
       'Ancho',
@@ -51,12 +51,12 @@ export const cardapio: BlocoCardapio[] = [
   },
   {
     titulo: 'Entradas',
-    descricao: 'Petiscos servidos enquanto as carnes principais assam.',
+    descricao: 'Petiscos servidos enquanto as carnes principais assam, a partir do horário de início do seu evento.',
     itens: ['Pão de alho caseiro (alho, maionese e orégano)', 'Coração de frango', 'Drumet (meio da asa)', 'Linguiças', 'Tiras de carne'],
   },
   {
     titulo: 'Acompanhamentos',
-    descricao: 'Para montar o prato do jeito que cada convidado gosta.',
+    descricao: 'Para cada convidado montar o prato como gosta: uma refeição completa, com muito sabor.',
     itens: [
       'Arroz branco',
       'Mandioca na manteiga',
@@ -67,12 +67,12 @@ export const cardapio: BlocoCardapio[] = [
   },
   {
     titulo: 'Feijão tropeiro',
-    descricao: 'Receita da casa, feita no dia.',
+    descricao: 'Receita tradicional da casa, feito no dia para o seu evento.',
     itens: ['Feijão fradinho', 'Farofa temperada', 'Bacon', 'Calabresa', 'Ovos', 'Cebola, alho e cebolinha'],
   },
   {
     titulo: 'Sobremesa',
-    descricao: 'Para fechar o churrasco. Uma opção, à sua escolha:',
+    descricao: 'Para fechar o churrasco, não pode faltar: uma opção doce, à sua escolha.',
     escolhaUma: true,
     itens: [
       'Sorvete com banana caramelizada',
@@ -82,7 +82,7 @@ export const cardapio: BlocoCardapio[] = [
   },
   {
     titulo: 'Complementos',
-    descricao: 'Sempre à mesa.',
+    descricao: 'Sempre à mesa, à disposição dos convidados.',
     itens: ['Azeite e aceto balsâmico', 'Molho barbecue', 'Molho para salada', 'Farofa temperada'],
   },
 ]
@@ -165,6 +165,18 @@ export const modalidades = [
     nome: 'Buffet completo',
     frase: 'Você só precisa se preocupar em receber os convidados.',
     detalhe: 'A gente cuida do resto: equipe, carnes, acompanhamentos e sobremesa.',
+  },
+]
+
+/** Perguntas extras da página de dúvidas (resposta em texto simples). */
+export const faqExtras = [
+  {
+    pergunta: 'Vocês fazem só o serviço de churrasqueiro?',
+    resposta: 'Sim. Na opção mão de obra o churrasqueiro assa as carnes que você fornecer. No buffet completo, a gente cuida de tudo: equipe, carnes, acompanhamentos e sobremesa.',
+  },
+  {
+    pergunta: 'Quanto custa o buffet de churrasco?',
+    resposta: 'O valor é por pessoa, varia com o pacote escolhido (Clássico, Festivo ou Premium) e é calculado a partir de 30 convidados adultos. Você recebe o orçamento personalizado para o seu evento pelo WhatsApp.',
   },
 ]
 

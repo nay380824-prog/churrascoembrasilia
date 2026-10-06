@@ -1,7 +1,7 @@
 import { StrictMode, useState, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
 import PageShell from '../components/PageShell'
-import { modalidades, incluidoDetalhado, pacotes, comoContratar, observacoes, pontosCarne } from '../content/site'
+import { modalidades, incluidoDetalhado, pacotes, comoContratar, observacoes, pontosCarne, faqExtras } from '../content/site'
 import '../index.css'
 
 const Dest = ({ children }: { children: ReactNode }) => <em className="not-italic text-brand-gold">{children}</em>
@@ -106,6 +106,22 @@ const perguntas: { pergunta: ReactNode; resposta: ReactNode }[] = [
         </div>
       </>
     ),
+  },
+  {
+    pergunta: (
+      <>
+        Vocês fazem só o serviço de <Dest>churrasqueiro</Dest>?
+      </>
+    ),
+    resposta: <p className="text-white/75 max-w-2xl">{faqExtras[0].resposta}</p>,
+  },
+  {
+    pergunta: (
+      <>
+        Quanto <Dest>custa</Dest> o buffet de churrasco?
+      </>
+    ),
+    resposta: <p className="text-white/75 max-w-2xl">{faqExtras[1].resposta}</p>,
   },
   {
     pergunta: (
